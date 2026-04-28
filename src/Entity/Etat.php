@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EtatRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EtatRepository::class)]
@@ -15,6 +17,17 @@ class Etat
 
     #[ORM\Column(length: 255)]
     private ?string $libelle = null;
+
+    /**
+     * @var Collection<int, Sortie>
+     */
+    #[ORM\OneToMany(targetEntity: Sortie::class, mappedBy: 'etat')]
+    private Collection $sorties;
+
+    public function __construct()
+    {
+        $this->sorties = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -31,5 +44,10 @@ class Etat
         $this->libelle = $libelle;
 
         return $this;
+    }
+
+    public function getSorties(): Collection
+    {
+        return $this->sorties;
     }
 }
