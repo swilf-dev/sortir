@@ -40,8 +40,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 100)]
     private ?string $pseudo = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $numTel = null;
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $numTel = null;
 
     #[ORM\Column]
     private ?bool $actif = null;
@@ -160,12 +160,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getNumTel(): ?int
+    public function getNumTel(): ?string
     {
         return $this->numTel;
     }
 
-    public function setNumTel(?int $numTel): static
+    public function setNumTel(?string $numTel): static
     {
         $this->numTel = $numTel;
 
