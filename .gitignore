@@ -2,5 +2,5 @@
 
 /phpunit.xml
 
-/var
+/var/
 .env.local
