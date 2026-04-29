@@ -21,7 +21,7 @@ final class Version20260428093456 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(100) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, nom VARCHAR(150) NOT NULL, prenom VARCHAR(150) NOT NULL, pseudo VARCHAR(100) NOT NULL, num_tel INT DEFAULT NULL, actif TINYINT NOT NULL, UNIQUE INDEX UNIQ_IDENTIFIER_EMAIL (email, pseudo), PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4');
-        $this->addSql('DROP TABLE utilisateur');
+
     }
 
     public function down(Schema $schema): void
