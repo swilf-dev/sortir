@@ -25,6 +25,7 @@ final class SortieController extends AbstractController
 
     #[Route('/sortie/liste', name: 'app_sortie_liste')]
     public function liste(SortieRepository $sortieRepository): Response{
+        //gestion des actions selon l'état d'une sortie
         return $this->render('sortie/index.html.twig', [
             'sorties' => $sortieRepository->findAll(),
 
@@ -57,5 +58,45 @@ final class SortieController extends AbstractController
         return $this->render('sortie/creer.html.twig', [
             'form' => $form,
         ]);
+    }
+
+    #[Route('/sortie/{id}/afficher', name: 'app_sortie_afficher')]
+    public function afficher(Sortie $sortie): Response
+    {
+        return $this->render('sortie/afficher.html.twig', [
+            'id' => $sortie->getId(),
+        ]);
+    }
+
+    #[Route('/sortie/{id}/supprimer', name: 'app_sortie_supprimer')]
+    public function supprimer(Sortie $sortie): Response
+    {
+        return $this->redirectToRoute('app_sortie');
+    }
+
+    #[Route('/sortie/{id}/modifier', name: 'app_sortie_modifier')]
+    public function modifier(Sortie $sortie): Response
+    {
+        return $this->render('sortie/modifier.html.twig', [
+            'id' => $sortie->getId(),
+        ]);
+    }
+
+    #[Route('/sortie/{id}/publier', name: 'app_sortie_publier')]
+    public function publier(Sortie $sortie): Response
+    {
+        return $this->redirectToRoute('app_sortie');
+    }
+
+    #[Route('/sortie/{id}/sinscrire', name: 'app_sortie_sinscrire')]
+    public function sinscrire(Sortie $sortie): Response
+    {
+        return $this->redirectToRoute('app_sortie');
+    }
+
+    #[Route('/sortie/{id}/desister', name: 'app_sortie_desister')]
+    public function desister(Sortie $sortie): Response
+    {
+        return $this->redirectToRoute('app_sortie');
     }
 }

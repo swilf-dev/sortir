@@ -13,7 +13,7 @@ class EtatFixtures extends Fixture
         $etats= [
             'En création',
             'Ouverte',
-            'Cloturée',
+            'Clôturée',
             'En cours',
             'Terminée',
             'Annulée',
