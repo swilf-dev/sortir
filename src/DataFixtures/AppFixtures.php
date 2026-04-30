@@ -52,6 +52,7 @@ private UserPasswordHasherInterface $passwordHasher;
     public function getDependencies(): array
     {
         return [
+
             CampusFixtures::class,
         ];
     }
