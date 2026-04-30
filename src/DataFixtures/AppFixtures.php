@@ -2,12 +2,14 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Campus;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Faker\Factory;
-class AppFixtures extends Fixture{
+class AppFixtures extends Fixture implements DependentFixtureInterface{
 
 private UserPasswordHasherInterface $passwordHasher;
    public function __construct(UserPasswordHasherInterface $passwordHasher)
@@ -27,6 +29,8 @@ private UserPasswordHasherInterface $passwordHasher;
         $user->setNumTel($faker->phoneNumber(9));
         $user->setRoles(['ROLE_USER']);
         $user->setActif(true);
+        $randomCampus = $this->getReference('campus_' . $faker->numberBetween(0, 4), Campus::class);
+        $user->setCampus($randomCampus);
 
 
 
@@ -44,5 +48,11 @@ private UserPasswordHasherInterface $passwordHasher;
 
 
         $manager->flush();
+    }
+    public function getDependencies(): array
+    {
+        return [
+            CampusFixtures::class,
+        ];
     }
 }

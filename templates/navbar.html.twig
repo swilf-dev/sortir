@@ -1,17 +1,16 @@
 
 <ul class="nav justify-content-end">
     <li class="nav-item">
-        <a class="nav-link active" href="{{ path('app_sortie') }}">Accueil</a>
+        <a class="nav-link active" href="{{ path('app_sortie_liste') }}">Accueil</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ path('app_profil', {'id': app.user.id}) }}">Mon profil</a>
-    </li>
-   {% if app.user %}
-    <a href="{{ path('app_logout') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Déconnexion</a>
-
-{% else %}
-    <a href="{{ path('app_login') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Connexion</a>
-{% endif %}
+    {% if app.user %}
+        <li class="nav-item">
+             <a class="nav-link" href="{{ path('app_profil', {'id': app.user.id}) }}">Mon profil</a>
+        </li>
+        <a href="{{ path('app_logout') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Déconnexion</a>
+    {% else %}
+        <a href="{{ path('app_login') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Connexion</a>
+    {% endif %}
 </ul>
 
 
