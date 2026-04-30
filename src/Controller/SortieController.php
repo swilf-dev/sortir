@@ -6,6 +6,7 @@ use App\Entity\Etat;
 use App\Entity\Sortie;
 use App\Form\SortieType;
 use App\Repository\EtatRepository;
+use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +20,14 @@ final class SortieController extends AbstractController
     {
         return $this->render('sortie/index.html.twig', [
             'controller_name' => 'SortieController',
+        ]);
+    }
+
+    #[Route('/sortie/liste', name: 'app_sortie_liste')]
+    public function liste(SortieRepository $sortieRepository): Response{
+        return $this->render('sortie/index.html.twig', [
+            'sorties' => $sortieRepository->findAll(),
+
         ]);
     }
 

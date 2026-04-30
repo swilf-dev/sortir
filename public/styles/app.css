@@ -2,7 +2,9 @@
 /*@source not "../../public";*/
 
 body {
-    background-color: lightgray;
+    background-color: whitesmoke;
+    font-family: "Segoe UI Light", "Helvetica Neue", Arial, sans-serif;
+    font-size: 1rem;
 }
 
 table {
@@ -13,11 +15,11 @@ table {
 th, td {
     border: 1px solid #ddd;
     padding: 10px;
-    text-align: center;
+    text-align: left;
 }
 thead {
     background-color: #4CAF50;
-    color: white;
+    color: black;
 }
 tbody tr:nth-child(even) {
     background-color: #f2f2f2;

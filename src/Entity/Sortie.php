@@ -35,7 +35,7 @@ class Sortie
     private ?string $infosSortie = null;
 
 
-    #[ORM\ManyToOne(inversedBy: 'sortie')]
+    #[ORM\ManyToOne(inversedBy: 'sorties')]
     #[ORM\JoinColumn(nullable: true)]
     private ?Etat $etat = null;
 
